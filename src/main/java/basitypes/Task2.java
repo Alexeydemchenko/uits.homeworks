@@ -70,7 +70,8 @@ public class Task2{
         double circleRad = readValue();
         if(circleRad > 0){
             double circleLen = 2.00 * Math.PI * circleRad;
-            System.out.println(circleLen);
+            System.out.println("Длина окружности равна " + circleLen);
+            System.out.println();
         }else{
             System.out.println("Радиус введен некорректно");
         }
@@ -82,7 +83,8 @@ public class Task2{
         double circleRad = readValue();
         if(circleRad > 0){
             double circleSqr = Math.PI * Math.pow(circleRad , 2);
-            System.out.println(circleSqr);
+            System.out.println("Площадь окружности равна " + circleSqr);
+            System.out.println();
         }else{
             System.out.println("Радиус введен некорректно");
         }
@@ -96,7 +98,8 @@ public class Task2{
         double interiorRad = readValue();
         if(externalRad >= interiorRad){
             double ringSqr = Math.PI * ((Math.pow(externalRad , 2)) - (Math.pow(interiorRad , 2)));
-            System.out.println(ringSqr);
+            System.out.println("Площадь кольца равна " + ringSqr);
+            System.out.println();
         } else {
             System.out.println("Внешний радиус меньше чем внутренний");
         }
@@ -112,6 +115,7 @@ public class Task2{
             double cathetusC = Math.sqrt(Math.pow(sideA , 2)) + Math.sqrt(Math.pow(sideB , 2));
             double perimetr = sideA + sideB + cathetusC;
             System.out.println("Периметр равен: " + perimetr);
+            System.out.println();
         }else{
             System.out.println("Сторонны введены некорректно");
         } 
@@ -125,7 +129,8 @@ public class Task2{
         double height = readValue();
         if(sideA > 0 && height > 0){
             double triangleSqr = 0.5 * sideA * height;
-            System.out.println("Площадь треугольника: " + triangleSqr);
+            System.out.println("Площадь треугольника равна " + triangleSqr);
+            System.out.println();
         }else{
             System.out.println("Сторонна или высота введена некорректно");
         } 
@@ -138,7 +143,8 @@ public class Task2{
         double sideBC = readValue();
         if(sideAB > 0 && sideBC > 0){
             double perimetr = (sideAB + sideBC) * 2.00;
-            System.out.println("Периметр прямоугольника равен: " + perimetr);
+            System.out.println("Периметр прямоугольника равен " + perimetr);
+            System.out.println();
         }else{
             System.out.println("Сторонны введены некорректно");
         }
@@ -152,7 +158,8 @@ public class Task2{
         double widthB = readValue();
         if(lengthA > 0 && widthB > 0){
             double rectSquare = lengthA * widthB;
-            System.out.println("Площадь прямоугольника равна: " + rectSquare);
+            System.out.println("Площадь прямоугольника равна " + rectSquare);
+            System.out.println();
         }else{
             System.out.println("Сторонны введены некорректно");
         }

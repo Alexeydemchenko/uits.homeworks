@@ -21,7 +21,7 @@ public class Task2 {
     }
     
     static void numToWord(int num){
-        String[] ones = {
+        String[] units = {
                         " ",
                         "один",
                         "два",
@@ -44,7 +44,7 @@ public class Task2 {
                         "девятнадцать"
                         };
         
-        String[] tens = {
+        String[] dozens = {
                         " ",
                         " ",
                         "двадцать",
@@ -57,11 +57,11 @@ public class Task2 {
                         "девяносто"
                         };
         if(num > 19){
-            System.out.println(tens[num / 10] + " " + ones[num % 10]);
+            System.out.println(dozens[num / 10] + " " + units[num % 10]);
         }else if(num == 0){
             System.out.println("ноль");
         }else{
-            System.out.println(ones[num]);
+            System.out.println(units[num]);
         }
     }
 }

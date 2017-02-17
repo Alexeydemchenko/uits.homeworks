@@ -31,5 +31,11 @@ public class Task1 {
             System.out.println("Сумма чисел кратных трем: " + mult3);
             System.out.println("Сумма чисел кратных пяти: " + mult5);
             System.out.println("Сумма чисел кратных семи: " + mult7);
-    }
+            
+            int dif72 = mult2 - mult7;
+            double div53 = (((double)mult5)/((double)mult3));
+            System.out.println();
+            System.out.println("Разность сумм кратных 2-м и 7-ми: " + dif72);
+            System.out.println("Отношение сумм кратных 5-и и 3-м: " + div53);
+        }
 }

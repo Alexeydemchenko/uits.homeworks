@@ -32,7 +32,22 @@ public class PhraseGen {
         str.append(" ");
         
         String phrase = str.toString();
+        System.out.println("StringBuilder phrase");
         System.out.println(phrase);
+        
+        StringBuffer str1 = new StringBuffer(20);
+        str1.append(firstWord[rand1]);
+        str1.append(" ");
+        str1.append(secondWord[rand2]);
+        str1.append(" ");
+        str1.append(thirdWord[rand3]);
+        str1.append(" ");
+        str1.append(fourthWord[rand4]);
+        str1.append(" ");
+        
+        System.out.println("\nStringBuffer phrase");
+        String phrase1 = str1.toString();
+        System.out.println(phrase1);
     }
 }
 

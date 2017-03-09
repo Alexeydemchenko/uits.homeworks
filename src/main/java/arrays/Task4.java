@@ -21,17 +21,19 @@ public class Task4 {
         System.out.println("\nСортировка в обратную сторону");
         for(int i = arr.length - 1; i >= 0; i--){
             System.out.print(arr[i] + " ");
+
         }
         
         System.out.println();
-        System.out.println("Четные элементы массива");
-//        
-//                    if(arr[i] % 2 == 0){
-//                System.out.println(i + " Четное число");
-//            }else if(arr[i] % 2 != 0){
-//                System.out.println(i);
-//            }
-        
+        System.out.println("\nЭлементы массива");
+        for(int i = 0; i < arr.length; i++){
+            System.out.println();
+            if(arr[i] % 2 == 0){
+                System.out.println("индекс " + i + " четный элемент " + arr[i]);
+            }else if(arr[i] % 2 != 0){
+                System.out.println("индекс " + i + " нечетный элемент " + arr[i]);
+            }
+        }
     }
    
     static void bubbleSort(int[] arr){

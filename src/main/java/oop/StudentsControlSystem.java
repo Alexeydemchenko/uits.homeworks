@@ -2,7 +2,7 @@ package oop;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Calendar;
-public class Student {
+public class StudentsControlSystem {
     private int id;
     private String name;
     private String surName;
@@ -103,12 +103,9 @@ public class Student {
                 "Телефон: " + tel);
                 
     }
-    
-    
-    
     public static void main(String[] args) {
-        Student[] std = new Student[3];
-        std[0] = new Student();
+        StudentsControlSystem[] std = new StudentsControlSystem[5];
+        std[0] = new StudentsControlSystem();
         std[0].setId(1);
         std[0].setName("Василий");
         std[0].setSurName("Иванов");
@@ -123,7 +120,7 @@ public class Student {
         std[0].setTel(480949234);
         System.out.println(std[0].toString());
         
-        std[1] = new Student();
+        std[1] = new StudentsControlSystem();
         std[1].setId(2);
         std[1].setName("Дмитрий");
         std[1].setSurName("Петров");
@@ -137,5 +134,50 @@ public class Student {
         std[1].setCourse(3);
         std[1].setTel(245893899);
         System.out.println(std[1].toString());
+        
+        std[2] = new StudentsControlSystem();
+        std[2].setId(3);
+        std[2].setName("Олег");
+        std[2].setSurName("Соколов");
+        std[2].setMiddleName("Андреевич");
+        Calendar c2 = Calendar.getInstance();
+        c.set(1991, 9, 9);
+        std[2].getDateOfBirth(c.getTime());
+        std[2].setAdress("NY");
+        std[2].setFaculty("Psychology");
+        std[2].setGroup("P - 0911");
+        std[2].setCourse(6);
+        std[2].setTel(1231312313);
+        System.out.println(std[2].toString());
+        
+        std[3] = new StudentsControlSystem();
+        std[3].setId(4);
+        std[3].setName("Владимир");
+        std[3].setSurName("Олейников");
+        std[3].setMiddleName("Вячеславович");
+        Calendar c3 = Calendar.getInstance();
+        c.set(1992, 29, 23);
+        std[3].getDateOfBirth(c.getTime());
+        std[3].setAdress("DC");
+        std[3].setFaculty("Sociology");
+        std[3].setGroup("SC - 1012");
+        std[3].setCourse(6);
+        std[3].setTel(551312313);
+        System.out.println(std[2].toString());
+        
+        std[4] = new StudentsControlSystem();
+        std[4].setId(1);
+        std[4].setName("Василий");
+        std[4].setSurName("Иванов");
+        std[4].setMiddleName("Петрович");
+        Calendar c4 = Calendar.getInstance();
+        c.set(1995, 9, 12);
+        std[4].getDateOfBirth(c.getTime());
+        std[4].setAdress("Alabama");
+        std[4].setFaculty("Computer Science");
+        std[4].setGroup("JV - 1614");
+        std[4].setCourse(4);
+        std[4].setTel(481239234);
+        System.out.println(std[4].toString());
     }
 }

@@ -8,7 +8,7 @@ public class Task5 {
         System.out.println("Введите количество столбцов");
         int col = scan.nextInt();
         int[][] mat = createNewMatrix(ln, col);
-        
+        viewMatrix(mat);
         
     }
     
@@ -24,5 +24,14 @@ public class Task5 {
         return mat;
     }
     
+    // метод для выведения всех элементов матрицы
+    static void viewMatrix(int[][] array){
+        for(int[] lines : array){
+            for(int element : lines){
+                System.out.print(element + " ");
+            }
+            System.out.println();
+        }
+    }
     
 }

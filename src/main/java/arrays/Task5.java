@@ -1,20 +1,28 @@
-
 package arrays;
-
+import java.util.*;
 public class Task5 {
     public static void main(String[] args){
-        int[][] arr = new int[10][10];
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 0; j < arr[i].length; j++){
-                arr[i][j] = (int) (Math.random() * 10);
-            }
-        }
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Введите количество строк");
+        int ln = scan.nextInt();
+        System.out.println("Введите количество столбцов");
+        int col = scan.nextInt();
+        int[][] mat = createNewMatrix(ln, col);
         
-        for(int i = 0; i < arr.length; i++){
-            for(int j = 0; j < arr[i].length; j++){
-                System.out.print(arr[i][j] + " ");
-            }
-            System.out.println();
-        }
+        
     }
+    
+    //метод для создания матрицы
+    static int[][] createNewMatrix(int lines, int columns){
+        int[][] mat = new int[lines][columns];
+        Random random = new Random();
+        for(int i = 0; i < lines; i++){
+            for(int j = 0; j < columns; j++){
+                mat[i][j] = random.nextInt(10);
+            }
+        }
+        return mat;
+    }
+    
+    
 }

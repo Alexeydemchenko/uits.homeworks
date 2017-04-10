@@ -28,7 +28,7 @@ public class StudentsControl {
         this.name = name;
         this.middleName = middleName;
         try{
-            SimpleDateFormat sdf = new SimpleDateFormat();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
             this.birthday = sdf.parse(birthday);
         }catch(ParseException e){
             e.printStackTrace();
@@ -72,17 +72,17 @@ public class StudentsControl {
         return middleName;
     }
     
-    public void setDateBirth(String birthday){
+    public void setDateOfBirth(String birthday){
         try{
-            SimpleDateFormat sdf = new SimpleDateFormat();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
             this.birthday = sdf.parse(birthday);
         }catch(ParseException e){
             e.printStackTrace();
         }
     }
     
-    public void getDateBirth(Date birthday){
-        this.birthday = birthday;
+    public String getDateOfBirth(){
+        return dateFormat.format(birthday);
     }
     
     public void setAdress(String adress){
@@ -127,11 +127,11 @@ public class StudentsControl {
     
    
     public String printStudent(){
-        return ("Фамилия: " + surName + "\n" + "Имя: " + surName + "\n" + 
+        return ("Фамилия: " + surName + "\n" + "Имя: " + name + "\n" + 
                 "Отчество: " + middleName + "\n" + "ID: " + id + "\n" + 
-                "Дата рождения: " + birthday + "\n" + "Адрес: " + adress + "\n"
+                "Дата рождения: " + dateFormat.format(birthday) + "\n" + "Адрес: " + adress + "\n"
                 + "Факультет: " + faculty + "\n" + "Группа: " + group + "\n" +
-                "Телефон: " + phoneNumber);
+                "Курс: " + course + "\n" + "Телефон: " + phoneNumber);
     }
     
 }

@@ -96,7 +96,8 @@ public class AllStudents{
         facultyAndCourse(student, "ФК", 4);
         System.out.println("=======================================");
         chooseCourse(student, "02");
-        
+        System.out.println("=======================================");
+        after(student, 1980);
     }
     
     // Метод для создания студентов.
@@ -151,14 +152,18 @@ public class AllStudents{
     }
     
     //Метод для выведения студентов после указанного года
-//    public static void chooseYear(StudentsControl[] student, int year){
-//        for(int i = 0; i < student.length; i++){
-//            String birthday = student[i].getDateOfBirth();
-//            int newDate = birthday.parseInt();
-//        }
-//    }
+    public static void after(StudentsControl[] student, int year){
+        Calendar cnd = Calendar.getInstance();
+        Calendar past = Calendar.getInstance();
+        past.set(Calendar.YEAR, year);
+        for(int i = 0; i < student.length; i++){
+            if(student[i].getDateOfBirth().equals(past)){
+                System.out.println(student[i].printStudent());
+            }
+        }
+    }
     
-    //Метод для выведения студентов указанного курса
+   //Метод для выведения студентов указанного курса
     public static void chooseCourse(StudentsControl[] student, String group){
         System.out.println("СТУДЕНТЫ ГРУППЫ " + group + "\n");
         for(int i = 0; i < student.length; i++){

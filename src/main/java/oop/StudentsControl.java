@@ -9,7 +9,7 @@ public class StudentsControl {
     private String surName;
     private String name;
     private String middleName;
-    private Date birthday;
+    private Calendar birthday;
     private String adress;
     private String phoneNumber;
     private String faculty;
@@ -27,17 +27,31 @@ public class StudentsControl {
         this.surName = surName;
         this.name = name;
         this.middleName = middleName;
-        try{
-            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-            this.birthday = sdf.parse(birthday);
-        }catch(ParseException e){
-            e.printStackTrace();
-        }
+        this.birthday = createNewDate(birthday);
         this.adress = adress;
         this.phoneNumber = phoneNumber;
         this.adress = faculty;
         this.course = course;
         this.group = group;
+    }
+    
+    public static Calendar createNewDate(String parseDate){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        Calendar cnd = Calendar.getInstance();
+        try{
+            cnd.setTime(sdf.parse(parseDate));
+        }catch(ParseException e){
+            return null;
+        }
+        return cnd;
+    }
+    
+    public String parseDateToString(){
+        String date = "";
+        date += birthday.get(Calendar.DAY_OF_MONTH) + ".";
+        date += birthday.get(Calendar.MONTH) + ".";
+        date += birthday.get(Calendar.YEAR);
+        return date;
     }
     
     public void setId(int id){
@@ -73,16 +87,11 @@ public class StudentsControl {
     }
     
     public void setDateOfBirth(String birthday){
-        try{
-            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-            this.birthday = sdf.parse(birthday);
-        }catch(ParseException e){
-            e.printStackTrace();
-        }
+        this.birthday = createNewDate(birthday);
     }
     
-    public String getDateOfBirth(){
-        return dateFormat.format(birthday);
+    public Calendar getDateOfBirth(){
+        return birthday;
     }
     
     public void setAdress(String adress){
@@ -125,11 +134,11 @@ public class StudentsControl {
         return group;
     }
     
-   
+    
     public String printStudent(){
         return ("Фамилия: " + surName + "\n" + "Имя: " + name + "\n" + 
                 "Отчество: " + middleName + "\n" + "ID: " + id + "\n" + 
-                "Дата рождения: " + dateFormat.format(birthday) + "\n" + "Адрес: " + adress + "\n"
+                "Дата рождения: " + parseDateToString() + "\n" + "Адрес: " + adress + "\n"
                 + "Факультет: " + faculty + "\n" + "Группа: " + group + "\n" +
                 "Курс: " + course + "\n" + "Телефон: " + phoneNumber);
     }

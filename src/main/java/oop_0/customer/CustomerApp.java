@@ -51,6 +51,10 @@ public class CustomerApp {
         System.out.println("\n==================================\n");
         Arrays.sort(customer);
         printCustomer(customer);
+        System.out.println("\n==================================\n");
+        System.out.println("ИНТЕРВАЛ СЧЕТОВ КРЕДИТНЫХ КАРТ: ");
+        System.out.println("\n==================================\n");
+        accountGap(customer, 100000, 300000);
     }
     
    public static void createCustomer(){
@@ -71,6 +75,15 @@ public class CustomerApp {
    public static void printCustomer(Customer[] customer){
        for(int i = 0; i < customer.length; i++){
            System.out.println(customer[i].printCustomer() + "\n");
+       }
+   }
+   
+   public static void accountGap(Customer[] customer, int startPoint, int finalPoint){
+       for(int i = 0; i < customer.length; i++){
+           if(customer[i].getAccountNum() > startPoint && 
+              customer[i].getAccountNum() < finalPoint){
+               System.out.println(customer[i].printCustomer() + "\n");
+           }
        }
    }
 }

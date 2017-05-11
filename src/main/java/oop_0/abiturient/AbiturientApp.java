@@ -41,8 +41,22 @@ public class AbiturientApp {
         "г.Киев, ул.Лаврская, 19"
     };
     
-   
+    public static int[] marks = {
+        5,
+        4,
+        3,
+        2
+    };
     
+    public static void main(String[] args){
+        createAbiturient();
+        showAbiturient();
+        System.out.println("\n==================================\n");
+        System.out.println("СТУДЕНТЫ С НИЗКОЙ УСПЕВАЕМОСТЬЮ: ");
+        System.out.println("\n==================================\n");
+        lowMarks(abiturient, 2);
+    }
+
     
     public static void createAbiturient(){
         abiturient = new Abiturient[10];
@@ -54,8 +68,32 @@ public class AbiturientApp {
             a.setMiddleName(middleName[rand.nextInt(middleName.length)]);
             a.setAdress(adress[rand.nextInt(adress.length)]);
             a.setPhoneNum("+380" + (rand.nextInt(1000000000)));
+            a.setChemistry(marks[rand.nextInt(marks.length)]);
+            a.setComputerScience(marks[rand.nextInt(marks.length)]);
+            a.setHistory(marks[rand.nextInt(marks.length)]);
+            a.setMathematics(marks[rand.nextInt(marks.length)]);
+            a.setPhylosophy(marks[rand.nextInt(marks.length)]);
+            a.setPhysics(marks[rand.nextInt(marks.length)]);
             abiturient[i] = a;
         }
-        
+    }
+    
+    public static void showAbiturient(){
+        for(int i = 0; i < abiturient.length; i++){
+            System.out.println(abiturient[i].printAbiturient());
+        }
+    }
+    
+    public static void lowMarks(Abiturient[] ab, int limit){
+        for(int i = 0; i < abiturient.length; i++){
+            if((abiturient[i].getChemistry() == limit) ||
+               (abiturient[i].getPhysics() == limit) ||
+               (abiturient[i].getHistory() == limit) ||
+               (abiturient[i].getComputerScience() == limit) ||
+               (abiturient[i].getPhylosophy() == limit)&&
+               (abiturient[i].getComputerScience() == limit)){
+                    System.out.println(abiturient[i].printAbiturient());
+            }
+        }
     }
 }

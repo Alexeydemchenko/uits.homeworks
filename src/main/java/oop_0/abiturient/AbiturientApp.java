@@ -51,10 +51,30 @@ public class AbiturientApp {
     public static void main(String[] args){
         createAbiturient();
         showAbiturient();
-        System.out.println("\n==================================\n");
+        System.out.println("\n=====================================" + 
+                            "========================\n");
         System.out.println("СТУДЕНТЫ С НИЗКОЙ УСПЕВАЕМОСТЬЮ: ");
-        System.out.println("\n==================================\n");
+        System.out.println("\n=====================================" + 
+                            "========================\n");
         lowMarks(abiturient, 2);
+        System.out.println("\n=====================================" + 
+                            "========================\n");
+        System.out.println("СТУДЕНТЫ, СУММАРНЫЕ ОЦЕНКИ КОТОРЫХ ВЫШЕ ПРЕДЕЛА: ");
+        System.out.println("\n=====================================" + 
+                            "========================\n");
+        sumMarks(abiturient, 20);
+        System.out.println("\n=====================================" + 
+                            "========================\n");
+        System.out.println("СТУДЕНТЫ, С ЛУЧШЕЙ УСПЕВАЕМОСТЬЮ: ");
+        System.out.println("\n=====================================" + 
+                            "========================\n");
+        bestAbiturient(abiturient, 25);
+        System.out.println("\n=====================================" + 
+                            "========================\n");
+        System.out.println("СТУДЕНТЫ, С ПОЛУПРОХОДНОЙ УСПЕВАЕМОСТЬЮ: ");
+        System.out.println("\n=====================================" + 
+                            "========================\n");
+        middleAbiturient(abiturient, 3);
     }
 
     
@@ -89,11 +109,74 @@ public class AbiturientApp {
             if((abiturient[i].getChemistry() == limit) ||
                (abiturient[i].getPhysics() == limit) ||
                (abiturient[i].getHistory() == limit) ||
-               (abiturient[i].getComputerScience() == limit) ||
+               (abiturient[i].getMathematics()== limit) ||
                (abiturient[i].getPhylosophy() == limit)&&
                (abiturient[i].getComputerScience() == limit)){
                     System.out.println(abiturient[i].printAbiturient());
             }
         }
     }
+    
+    public static void sumMarks(Abiturient[] ab, int limit){
+        for(int i = 0; i < abiturient.length; i++){
+            if(abiturient[i].getMarksSum() > limit){
+                System.out.println(abiturient[i].printAbiturient());
+            }
+        }
+    }
+    
+//   "СТУДЕНТЫ С ЛУЧШЕЙ УСПЕВАЕМОСТЬЮ" -
+//   ВАРИАНТ С СУММОЙ БАЛЛОВ
+    public static void bestAbiturient(Abiturient[] ab, int limit){
+        for(int i = 0; i < abiturient.length; i++){
+            if(abiturient[i].getMarksSum() > limit){
+                System.out.println(abiturient[i].printAbiturient());
+            }
+        }
+    }
+    
+    public static void middleAbiturient(Abiturient[] ab, int limit){
+        for(int i = 0; i < abiturient.length; i++){
+            if((abiturient[i].getChemistry() >= limit) &&
+               (abiturient[i].getPhysics() >= limit) &&
+               (abiturient[i].getHistory() >= limit) &&
+               (abiturient[i].getMathematics() >= limit) &&
+               (abiturient[i].getPhylosophy() >= limit) &&
+               (abiturient[i].getComputerScience() >= limit)){
+                    System.out.println(abiturient[i].printAbiturient());
+            }
+        }
+    }
+ 
+//   "СТУДЕНТЫ С ЛУЧШЕЙ УСПЕВАЕМОСТЬЮ" -
+//   ВАРИАНТ С ОЦЕНКАМИ ВЫШЕ 3-х
+//   --------------------------------------------------------------------------
+//    public static void bestAbiturient(Abiturient[] ab, int limit){
+//        for(int i = 0; i < abiturient.length; i++){
+//            if((abiturient[i].getChemistry() > limit) &&
+//               (abiturient[i].getPhysics() > limit) &&
+//               (abiturient[i].getHistory() > limit) &&
+//               (abiturient[i].getMathematics() > limit) &&
+//               (abiturient[i].getPhylosophy() > limit) &&
+//               (abiturient[i].getComputerScience() > limit)){
+//                    System.out.println(abiturient[i].printAbiturient());
+//            }
+//        }
+//    }
+
+//   "СТУДЕНТЫ, СУММАРНЫЕ ОЦЕНКИ КОТОРЫХ ВЫШЕ ПРЕДЕЛА" -
+//   ВАРИАНТ БЕЗ МЕТОДА getMarksSum()
+//   --------------------------------------------------------------------------    
+//    public static void sumMarks(Abiturient[] ab, int limit){
+//        for(int i = 0; i < abiturient.length; i++){
+//            if((abiturient[i].getChemistry() + 
+//                abiturient[i].getPhysics() + 
+//                abiturient[i].getHistory() + 
+//                abiturient[i].getMathematics() + 
+//                abiturient[i].getPhylosophy() +
+//                abiturient[i].getComputerScience())> limit){
+//                    System.out.println(abiturient[i].printAbiturient());
+//            }
+//        }
+//    }
 }

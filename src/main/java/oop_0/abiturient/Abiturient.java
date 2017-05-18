@@ -111,16 +111,6 @@ public class Abiturient {
         this.phylosophy = phylosophy;
     }
     
-    
-//    private int physics;
-//    private int chemistry;
-//    private int mathematics;
-//    private int computerScience;
-//    private int history;
-//    private int phylosophy;
-    
-    
-    
     public int getMarksSum(){
         return physics + chemistry + mathematics + computerScience + history + 
                phylosophy;

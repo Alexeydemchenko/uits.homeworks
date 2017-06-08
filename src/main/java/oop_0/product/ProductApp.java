@@ -3,8 +3,7 @@ import java.util.Random;
 
 public class ProductApp {
     public static Random rand = new Random();
-    
-    
+        
     public static long randUpc() {
         long randomVal = (long)(Math.random() * 1000000000);
         return randomVal;

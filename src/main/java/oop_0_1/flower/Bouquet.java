@@ -1,19 +1,50 @@
 package oop_0_1.flower;
 import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Bouquet {
-    private double cost;
-    private List<Flower> flowers = new ArrayList<Flower>(); 
+    public Flower[] flowers;
+    public Accessories[] acc;
+    public double price = 0.0;
     
-    public double getCost(){
-        return cost;
+    //Цена букета
+    public double getPrice(){
+        return price;
     }
     
-    public Bouquet addFlower(Flower flower){
-        flowers.add(flower);
-        cost += flower.getCost();
-        return this;
+    //Добавление цветов в букет
+    public void addFlowers(Flower[] flowers){
+        for(Flower flower : flowers){
+            price += price + flower.getPrice();
+        }
+        this.flowers = flowers;
+    }
+    
+    //Добавление аксессуаров в букет
+    public void addAccessories(Accessories[] accessories){
+        for(Accessories accessory : accessories){
+            price += accessory.getAccPrice();
+        }
+    }
+    
+    //Показать все цветы
+    public void showFlower(){
+        for(Flower flower : flowers){
+            System.out.println(flower);
+        }
+    }
+    
+    //Сортировка по свежести
+    public void freshnessSort(){
+        Arrays.sort(flowers);
+    }
+    
+    //Сравнить цветы по длине стебля
+    public void compareStalkLength(double startPoint, double finalPoint){
+        for(Flower flower : flowers){
+            if(flower.getStalkLength() >= startPoint &&
+               flower.getStalkLength() <= finalPoint){
+                System.out.println(flower);
+            }
+        }
     }
 }

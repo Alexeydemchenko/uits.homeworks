@@ -6,8 +6,12 @@ public enum Accessories {
     LACE(4.0),
     BRANCH(4.0);
     
-    private double cost;
-    Accessories(double cost){
-        this.cost = cost;
+    private double price;
+    Accessories(double price){
+        this.price = price;
+    }
+    
+    public double getAccPrice(){
+        return price;
     }
 }

@@ -4,7 +4,7 @@ public class Flower implements Comparable<Flower>{
     private String color;
     private Integer freshness;
     private double stalkLength;
-    private double cost;
+    private double price;
 
     public String getColor(){
         return color;
@@ -30,12 +30,12 @@ public class Flower implements Comparable<Flower>{
         this.stalkLength = stalkLength;
     }
     
-    public double getCost(){
-        return cost;
+    public double getPrice(){
+        return price;
     }
     
-    public void setCost(double cost){
-        this.cost = cost;
+    public void setPrice(double price){
+        this.price = price;
     }
     
     Flower(){
@@ -46,12 +46,12 @@ public class Flower implements Comparable<Flower>{
         this.color = color;
         this.freshness = freshness;
         this.stalkLength = stalkLength;
-        this.cost = cost;
+        this.price = price;
     }
     
     public String printFlower(){
         return "Flower: \n" + "Свежесть: " + freshness + "\nДлина стебля:" + 
-                stalkLength + "\nСтоимость: " + cost + "\n";
+                stalkLength + "\nСтоимость: " + price + "\n";
     }
     
     @Override

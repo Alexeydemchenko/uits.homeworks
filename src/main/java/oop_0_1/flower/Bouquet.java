@@ -39,7 +39,7 @@ public class Bouquet {
     }
     
     //Сравнить цветы по длине стебля
-    public void compareStalkLength(double startPoint, double finalPoint){
+    public void showStalkLength(double startPoint, double finalPoint){
         for(Flower flower : flowers){
             if(flower.getStalkLength() >= startPoint &&
                flower.getStalkLength() <= finalPoint){

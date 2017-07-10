@@ -56,6 +56,10 @@ public class Flower implements Comparable<Flower>{
     
     @Override
     public int compareTo(Flower flower){
-        return this.freshness.compareTo(flower.freshness);
+        if(this.freshness < flower.freshness){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 }

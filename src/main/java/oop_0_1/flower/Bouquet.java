@@ -6,6 +6,10 @@ public class Bouquet {
     public Accessories[] acc;
     public double price = 0.0;
     
+    public Bouquet(){
+    
+    }
+    
     //Цена букета
     public double getPrice(){
         return price;
@@ -43,7 +47,7 @@ public class Bouquet {
         for(Flower flower : flowers){
             if(flower.getStalkLength() >= startPoint &&
                flower.getStalkLength() <= finalPoint){
-                System.out.println(flower);
+                System.out.println(flower.printFlower());
             }
         }
     }

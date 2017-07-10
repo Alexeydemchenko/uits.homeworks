@@ -6,64 +6,78 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlowerApp {
-    private List<Flower> flowers = new ArrayList<Flower>();
-    public static Bouquet[] bouquet;
+    private static Bouquet[] bouquets = new Bouquet[10];
     public static Random rand = new Random();
     public static Scanner scan = new Scanner(System.in);
-    public static ArrayList<Bouquet> bouquetList = new ArrayList<Bouquet>();
-    
+    public static int countBouquets = 0;
+        
     public static void main(String[] args) {
-        System.out.println("МЕНЮ:");
-        System.out.println("1 - Создать новый букет");
-        System.out.println("2 - Показать созданные букеты");
-                
-        int indexOfMenu = scan.nextInt();
-        switch(indexOfMenu){
-            case 1:{
-                createNewBouquet();
-            }break;
-            case 2:{
-                System.out.println(bouquetList);
-            }break;
-            case 3:{
-                
-            }break;
+        boolean menuControl = false;
+        while(!menuControl){
+            System.out.println("МЕНЮ:");
+            System.out.println("1 - Создать новый букет");
+            System.out.println("2 - Показать созданные букеты");
+            System.out.println("3 - ВЫХОД");  
+            int indexOfMenu = scan.nextInt();
+            switch(indexOfMenu){
+                case 1:{
+                    createNewBouquet();
+                }break;
+                case 2:{
+                    pickBouquetModule();
+                }break;
+                case 3:{
+                    menuControl = true;
+                }break;
+            }
         }
     }
     
     //Создать новый букет
     public static void createNewBouquet(){
-        Bouquet bouquet = new Bouquet();
-        bouquet.addFlowers(createFlowers());
-        System.out.println("ЦЕНА БУКЕТА: ");
-        System.out.println(bouquet.getPrice());
-        bouquetList.add(bouquet);
+        boolean isReady = false;
+        while(!isReady){
+            Bouquet bouquet = new Bouquet();
+            bouquet.addFlowers(createFlowersModule());
+            System.out.println("ЦЕНА БУКЕТА: ");
+            System.out.println(bouquet.getPrice());
+            addBouquet(bouquet);
+            isReady = true;
+        }
     }
-    
 
-
-
-
-    
-    
-    
-    
-    //Создать конкретный цветок
-    public static Flower createSingleFlower(Flower flower){
-        flower.setPrice(rand.nextInt(20) + 1);
-        flower.setStalkLength(rand.nextInt(25) + 1);
-        flower.setFreshness(rand.nextInt(5) + 1);
-        return flower;
+    //Добавление букета в массив
+    public static void addBouquet(Bouquet bouquet) {
+        if (countBouquets >= bouquets.length) {
+            int newLength = (bouquets.length * 10);
+//            int newLength = (bouquets.length * 3) / 2 + 1;
+            bouquets = Arrays.copyOf(bouquets, newLength);
+        }
+        bouquets[countBouquets++] = bouquet;
     }
-    
+
+    //Создать массив цветов
+    public static Flower[] createFlowersModule(){
+        System.out.println("================================================");
+        System.out.println("Сколько необходимо цветов? Введите кол-во.");
+        System.out.println("================================================");
+        int numOfFlowers = scan.nextInt();
+        Flower[] flowers = new Flower[numOfFlowers];
+        for(int i = 0; i < flowers.length; i++){
+            flowers[i] = pickFlowerModule(i + 1);
+        }
+        return flowers;
+    }
     
     //Выбрать цветок
-    public static Flower pickFlower(int flowerPosition){
+    public static Flower pickFlowerModule(int flowerPosition){
+        System.out.println("================================================");
         System.out.println("ВЫБЕРЕТЕ ЦВЕТОК:");
         System.out.println("1 - Астры");
         System.out.println("2 - Гиацинт");
         System.out.println("3 - Роза");
         System.out.println("4 - Гвоздика");
+        System.out.println("================================================");
         int indexOfFlower = scan.nextInt();
         switch(indexOfFlower){
             case 1: {
@@ -84,48 +98,73 @@ public class FlowerApp {
         }
     }
     
-    //Создать массив цветов
-    public static Flower[] createFlowers(){
-        System.out.println("Сколько необходимо цветов? Введите кол-во.");
-        int numOfFlowers = scan.nextInt();
-        Flower[] flowers = new Flower[numOfFlowers];
-        for(int i = 0; i < numOfFlowers; i++){
-            flowers[i] = pickFlower(i);
-        }
-        return flowers;
+    //Создать конкретный цветок
+    public static Flower createSingleFlower(Flower flower){
+        flower.setPrice(rand.nextInt(20) + 1);
+        flower.setStalkLength(rand.nextInt(25) + 1);
+        flower.setFreshness(rand.nextInt(5) + 1);
+        return flower;
     }
-    
-    //Меню управления букетом
-    public static void bouquetControl(Bouquet bouquet){
-        System.out.println("ВЫБЕРЕТЕ ПАРАМЕТРЫ БУКЕТА:");
-        System.out.println("1- Сортировка по свежести");
-        System.out.println("2- Поиск по длине стебля");
-        System.out.println("3- Стоимость букета");
+        
+    //Меню для просмотра и выбора соответствующего, 
+    //уже созданного букета
+    public static void pickBouquetModule(){
+        System.out.println("================================================");
+        System.out.println("ВЫБЕРЕТЕ НОМЕР БУКЕТА:");
+        System.out.println("================================================");
+        for(int i = 0; i < countBouquets; i++){
+            System.out.println("БУКЕТ №" + (i + 1));
+        }
+        boolean controller = false;
+        int indexInput = scan.nextInt();
+        bouquetControlModule(bouquets[indexInput - 1]);
+    }
+        
+    //Меню для управления информацией о букетах
+    public static void bouquetControlModule(Bouquet bouquet){
+        System.out.println("================================================");
+        System.out.println("ВЫБЕРЕТЕ ЖЕЛАЕМУЮ ОПЦИЮ:");
+        System.out.println("1 - Сортировка по свежести");
+        System.out.println("2 - Поиск по длине стебля");
+        System.out.println("3 - Стоимость букета");
+        System.out.println("2 - ВЫХОД ИЗ МОДУЛЯ");
+        System.out.println("================================================");
+        boolean controller = false;
         int indexOfMenu = scan.nextInt();
-        switch(indexOfMenu){
-            case 1:{
-                bouquet.freshnessSort();
-                bouquet.showFlower();
-            }break;
-            case 2:{
-                sortStalkLength(bouquet);
-            }break;
-            case 3:{
-                System.out.println("СТОИМОСТЬ:");
-                bouquet.getPrice();
-            }break;
+        while(!controller){
+            switch(indexOfMenu){
+                case 1:{
+                    bouquet.freshnessSort();
+                    bouquet.showFlower();
+                    controller = true;
+                }break;
+                case 2:{
+                    sortStalkLengthModule(bouquet);
+                    controller = true;
+                }break;
+                case 3:{
+                    System.out.println("СТОИМОСТЬ БУКЕТА СОСТАВЛЯЕТ:");
+                    System.out.println(bouquet.getPrice());
+                    controller = true;
+                }break;
+                case 4:{
+                    controller = true;
+                }break;
+            }
         }
-    }
+    }    
     
-    //Сортировка по длине стеблей
-    public static void sortStalkLength(Bouquet bouquet){
-        System.out.println("ВВЕДИТЕ ДАННЫЕ СТЕБЛЯ");
+    //Поиск цветка по длине стебля
+    public static void sortStalkLengthModule(Bouquet bouquet){
+        System.out.println("================================================");
+        System.out.println("ВВЕДИТЕ НЕОБХОДИМЫЙ РАЗМЕР СТЕБЛЯ");
+        System.out.println("Размер от:");
         double startPoint = scan.nextDouble();
+        System.out.println("Размер до:");
         double finalPoint = scan.nextDouble();
         if((startPoint > 0) || (finalPoint > 25) || (finalPoint > startPoint)){
             bouquet.showStalkLength(startPoint, finalPoint);
         }
+        System.out.println("================================================");
     }
-    
-    
 }
